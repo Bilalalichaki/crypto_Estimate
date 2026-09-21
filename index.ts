@@ -21,9 +21,13 @@ async function getLivePrice(symbol: string): Promise<number | null> {
 }
 
 async function startInteractiveCalculator() {
-  console.log('\n==========================================');
-  console.log('🚀 SPOT & FUTURE CRYPTO PROFIT CALCULATOR');
-  console.log('==========================================\n');
+  // ==========================================
+  // APNA CUSTOM WELCOME BANNER YAHAN ADD KIYA HAI
+  // ==========================================
+  console.log('\n========================================================');
+  console.log('    🚀 Welcome to CRYPTO ESTIMATOR (SPOT & FUTURE) 🚀   ');
+  console.log('            👨‍💻 DEVELOPER: BILAL ALI (SHEBI)             ');
+  console.log('========================================================\n');
 
   try {
     // 1. Trading Type Selection
@@ -119,11 +123,9 @@ async function startInteractiveCalculator() {
       // FUTURE CALCULATION
       if (isLong) {
         profitUSD = (exitPriceUSD - entryPriceUSD) * coinsPurchased;
-        // Approx Liquidation Price for Long (Isolated)
         liquidationPriceUSD = entryPriceUSD * (1 - 1 / leverage);
       } else {
         profitUSD = (entryPriceUSD - exitPriceUSD) * coinsPurchased;
-        // Approx Liquidation Price for Short (Isolated)
         liquidationPriceUSD = entryPriceUSD * (1 + 1 / leverage);
       }
     }
@@ -161,6 +163,8 @@ async function startInteractiveCalculator() {
     console.log(`📈 Future Total Return: $${totalReturnUSD.toFixed(2)} (Rs. ${totalReturnPKR.toLocaleString(undefined, { maximumFractionDigits: 2 })})`);
     console.log(`🚀 Estimated PnL      : ${profitUSD >= 0 ? '+' : ''}$${profitUSD.toFixed(2)} (Rs. ${profitPKR.toLocaleString(undefined, { maximumFractionDigits: 2 })})`);
     console.log(`📊 Return on Margin   : ${returnOnEquityPercentage >= 0 ? '+' : ''}${returnOnEquityPercentage.toFixed(2)}%`);
+    console.log('------------------------------------------');
+    console.log('        DEVELOPER: BILAL ALI (SHEBI)      ');
     console.log('==========================================\n');
 
   } catch (error) {
